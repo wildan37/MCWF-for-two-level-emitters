@@ -328,19 +328,11 @@ func_wave(double t, const double y[], double f[],
     int sigma_up;
     int sigma_down;
     double rad;
-//    double om_l;
     
     struct ODE_params *p = (struct ODE_params *)params;
     double Delta0 = p->Delta0;
     
-//    om_l = 4*M_PI;
-//    
-//    f[0] = -Omega/2 * (y[3]*cos(om_l) - y[2]*sin(om_l) + y[3]);
-//    f[1] = Omega/2 * (y[2]*cos(om_l) + y[3]*sin(om_l) + y[2]);
-//    f[2] = -Omega/2 * (y[1]*cos(om_l) + y[0]*sin(om_l) + y[1]);
-//    f[3] = Omega/2 * (y[0]*cos(om_l) - y[1]*sin(om_l) + y[0]);
     
-
     for (state = 0; state < Nstates; state+=1){
         sumimag = 0.0;
         sumreal = 0.0;
@@ -434,9 +426,9 @@ func_wave(double t, const double y[], double f[],
                             if (typeint == 0){
                                 ///vdW interaction
                                 if ( (state&(1<<spin_i))&&(state&(1<<spin_j))){
-                                    sumimag += V0 * y[2 * state +1]
+                                    sumimag += (V0/2.0) * y[2 * state +1]
                                     /(rsquare*rsquare*rsquare);
-                                    sumreal -= V0 * y[2 * state]
+                                    sumreal -= (V0/2.0)  *y[2 * state]
                                     /(rsquare*rsquare*rsquare);
                                 }
                             }
@@ -447,9 +439,9 @@ func_wave(double t, const double y[], double f[],
                                     if (!((1<<spin_i)&sigma_down)){
                                         sigma_up = (1<<spin_i)^sigma_down;
                                         
-                                        sumimag += V0 * y[2 * sigma_up+1]
+                                        sumimag += (V0/2.0) * y[2 * sigma_up+1]
                                         /(rad*rad*rad);
-                                        sumreal -= V0 * y[2 * sigma_up]
+                                        sumreal -= (V0/2.0) * y[2 * sigma_up]
                                         /(rad*rad*rad);
                                     }
                                 }
@@ -463,7 +455,7 @@ func_wave(double t, const double y[], double f[],
                     iy = spin_i/Lx;
                     ix = spin_i - Lx*iy;
 //                    printf("\n(%d,%d),\t",ix,iy);
-                    /*
+                    
                     for (dy = -(int)cut_off; dy <= (int)cut_off; dy+=1){
                         for (dx = -(int)cut_off; dx <= (int)cut_off; dx+=1){
                             if (dx!=0||dy!=0){
@@ -512,8 +504,8 @@ func_wave(double t, const double y[], double f[],
                         }
                     }
                 }
-                     */
-                    
+                     
+                    /*
                     for (j = 0; j < Nspins; j+=1){
                         if (spin_i!=j){
                             jy = j/Lx;
@@ -550,7 +542,7 @@ func_wave(double t, const double y[], double f[],
                             }
                         }
                     }
-                    
+                    */
                     
 //                    printf("\n");
                 }
