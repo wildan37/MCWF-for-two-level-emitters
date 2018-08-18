@@ -1,1 +1,6 @@
-MCWF numerical simulation
+This Code is aim at numerically solving Master equations Eq. (8) on Eur. Phys. J. Spec. Topics 225, 3019-3036 (2016) using Monte Carlo Wave function methods. On the contrary from the density matrix method, the density was unravelled as wavefunctions. Here wavefunctions evolve by solving Schroedinger equations. The simulations are performed for many realisations to obtain convincing statistics.
+
+The code consists of five parts: (i) init_noisedyn.c - contains parameters, initial conditions, and allocation memories; (ii) noise_process.c - contains function generator and integration of first order differential equations; (iii) main.c - the main program to run all the functions; (iv) header_noise.h - the header of the program; (v) mt19937ar.c - a library pseudo random number of mersenne twister.
+
+Type 'make' to compile the code and one needs gsl library that can be downloaded here https://www.gnu.org/software/gsl/. To gain speed, one can submit many realisations on various computer nodes. The example can be seen on submit.sh and submit_jobs.py. The usage of the latter is to automatically rewritten the .sh files for the expected parameters. Do not hesitate to aske me should there any question.
+ 
