@@ -1,14 +1,14 @@
 #!/bin/bash 
 #$ -S /bin/bash
 
-#$ -l h_rss=1000M,h_fsize=1000M,h_cpu=48:00:00,hw=x86_64
+#$ -l h_rss=1000M,h_fsize=1000M,h_cpu=3:00:00,hw=x86_64
 #$ -cwd 
 
-WORKDIR=$HOME/Documents/code/noisedynamics/runjoblocal1
-TARGETDIR=/data2/finite/wildan/noisedyn
+WORKDIR=$HOME/Documents/code/noisedynamics/rungslcode
+TARGETDIR=/data2/finite/wildan/noisedyn/datachapter4
 
 EXEC=./a.out
-PARAMETERS=(0 0 0 0 0 0)
+PARAMETERS=(0 0 0 0 0 0 0 0 0 0)
 
 echo ${WORKDIR}
 hostname
