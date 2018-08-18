@@ -12,9 +12,9 @@ void init_params(void){
     
     R3 = V0*V0*V0;
     R6 = V0*V0*V0*V0*V0*V0;
-    delta = 2.20;
+    
     ///Time propagation
-    tmax = 2e1;
+    tmax = 1e1;
     dt = 1e-3;        //second
     notimesteps = (int)(tmax/dt);
     t = 0.0;
@@ -27,7 +27,7 @@ void init_params(void){
     alpha = 6;
     cut_off = 1.0/pow ( epsilon, 1.0/(alpha - 1.0));
     cut_off = cut_off >= Nspins ? Nspins-1 : cut_off;
-    printf("%.2lf\n", cos(0.5*M_PI));
+
 //    printf("#%u\t%lf\t%lf\t%u\n", realisation, Gamma, p0, realisation);
     
     //store vector
